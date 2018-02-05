@@ -1,4 +1,13 @@
 <h1>Listes des articles</h1>
  <% @posts.each do |p| %>
   <h2> <%= p.title %> </h2>
-  <% end %>
+  <p>
+    <a href="<%= post_path(p.id) %>" class="btn btn-outline-success btn-sm "> Voir l'article</a>
+    <a href="<%= edit_post_path(p.id) %>" class="btn btn-outline-secondary btn-sm "> Editer l'article</a>
+    <a href="<%= post_path(p.id) %>" class="btn btn-outline-danger btn-sm " data-confirm="Voulez-vous vraiment supprimer l'article?" data-method="DELETE"> Supprimer l'article</a>
+  </p>
+<% end %>
+
+<p>
+  <a href="<%= new_post_path %>" class="btn btn-outline-primary btn-lg btn-block">Créer un nouvel article</a>
+</p>
