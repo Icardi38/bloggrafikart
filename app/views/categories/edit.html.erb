@@ -1,5 +1,13 @@
 <h1>Modifier une categorie</h1>
 
+<% if @category.invalid? %>
+  <div class="alert alert-danger">
+    <% @category.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </div>
+<% end %>
+
 <%= form_for @category do |f| %>
   <div class="form-group">
     <label>Titre de la categorie</label>

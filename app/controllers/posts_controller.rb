@@ -13,8 +13,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-    redirect_to posts_path, flash: {success:  "Article modifié avec succés"}
+    if @post.update(post_params)
+      redirect_to posts_path, flash: {success:  "Article modifié avec succés"}
+    else
+      render 'edit'
+    end
   end
 
   def new
@@ -23,7 +26,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create(post_params)
-    redirect_to posts_path, flash: {success:  "Article créé avec succés"}
+    redirect_to posts_path, flash: {success:  "Article créé avec succés"} 
   end
 
   def destroy

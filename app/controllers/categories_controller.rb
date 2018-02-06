@@ -19,8 +19,11 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @category.update(category_params)
-    redirect_to categories_path, flash: {success:  "Catégorie modifiée avec succés"}
+    if @category.update(category_params)
+      redirect_to categories_path, flash: {success:  "Catégorie modifiée avec succés"}
+    else
+      render 'edit'
+    end
   end
 
   def show
