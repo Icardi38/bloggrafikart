@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create(post_params)
-    redirect_to posts_path, flash: {success:  "Article créé avec succés"} 
+    redirect_to posts_path, flash: {success:  "Article créé avec succés"}
   end
 
   def destroy

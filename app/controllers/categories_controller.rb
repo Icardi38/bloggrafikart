@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 
   def create
     category = Category.create(category_params)
-    redirect_to categories_path, flash: {success:  "Catégorie créée avec succés"}
+    redirect_to categories_path, flash: {success:  "Catégorie créée avec succés"} 
   end
 
   def edit

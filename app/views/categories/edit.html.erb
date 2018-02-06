@@ -1,10 +1,8 @@
 <h1>Modifier une categorie</h1>
 
-<% if @category.invalid? %>
+<% if @category.errors.any? %>
   <div class="alert alert-danger">
-    <% @category.errors.full_messages.each do |message| %>
-      <%= message %>
-    <% end %>
+    <%= @category.errors[:title].first %>
   </div>
 <% end %>
 
