@@ -1,0 +1,32 @@
+<h1>Liste des categories</h1>
+
+<table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Index</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Description</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <th scope="row"><%= category.id %></th>
+      <td>
+      <%= category.title %>
+      </td>
+      <td>
+      <%= category.content %>
+      </td>
+      <td>
+        <a href="<%= edit_category_path(category.id) %>" class="btn btn-outline-secondary btn-sm "> Editer la catégorie</a>
+        <a href="<%= category_path(category.id) %>" class="btn btn-outline-danger btn-sm " data-confirm="Etes vous sur de vouloire supprimer la catégorie?" data-method="DELETE"> Supprimer la catégorie</a>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+  <a href="<%= new_category_path %>" class="btn btn-outline-primary btn-lg btn-block">Créer une nouvelle categorie</a>
+</p>
