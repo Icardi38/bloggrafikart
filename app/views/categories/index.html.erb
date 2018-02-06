@@ -6,7 +6,7 @@
       <th scope="col">Index</th>
       <th scope="col">Titre</th>
       <th scope="col">Description</th>
-
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -19,16 +19,14 @@
       <td>
       <%= category.content %>
       </td>
-      <% end %>
+      <td>
+        <a href="<%= edit_category_path(category.id) %>" class="btn btn-outline-secondary btn-sm "> Editer la catégorie</a>
+        <a href="<%= category_path(category.id) %>" class="btn btn-outline-danger btn-sm " data-confirm="Etes vous sur de vouloire supprimer la catégorie?" data-method="DELETE"> Supprimer la catégorie</a>
+      </td>
     </tr>
-
-
+    <% end %>
   </tbody>
 </table>
-<% @categories.each do |category| %>
-<h2> <%= category.title %></h2>
-<% end %>
-
 <p>
   <a href="<%= new_category_path %>" class="btn btn-outline-primary btn-lg btn-block">Créer une nouvelle categorie</a>
 </p>
