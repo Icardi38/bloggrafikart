@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+
+  before_action :set_category, only: [:edit, :update, :show, :destroy]
+
   def index
     @categories = Category.all
   end
@@ -9,27 +12,23 @@ class CategoriesController < ApplicationController
 
   def create
     category = Category.create(category_params)
-    redirect_to categories_path
+    redirect_to categories_path, flash: {success:  "Catégorie créée avec succés"}
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     @category.update(category_params)
-    redirect_to categories_path
+    redirect_to categories_path, flash: {success:  "Catégorie modifiée avec succés"}
   end
 
   def show
-    @category = Category.find(params[:id])
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
-    redirect_to categories_path
+    redirect_to categories_path, flash: {success:  "Catégorie supprimée avec succés"}
   end
 
   private
@@ -37,4 +36,9 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:title, :content)
   end
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
 end
